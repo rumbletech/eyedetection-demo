@@ -27,16 +27,19 @@
 
 //Uart settings
 
-#define BAUD_RATE    9600
-#define BYTE_SIZE    8
-#define PARITY_NO    0
-#define PARITY_ODD   1
-#define PARITY_EVEN  2
-#define PARITY_MARK  3
-#define PARITY_SPACE 4
-#define STOP_BITS_1  0
-#define STOP_BITS_15 1
-#define STOP_BITS_2  2
+#define APP_BAUD_RATE    CBR_9600
+#define APP_BYTE_SIZE    8
+#define APP_PARITY       NOPARITY
+#define APP_STOP_BITS    ONESTOPBIT
+
+#define PARTIY_NO    NO_PARITY
+#define PARITY_ODD   ODDPARITY
+#define PARITY_EVEN  EVENPARITY
+#define PARITY_MARK  MARKPARITY
+#define PARITY_SPACE SPACEPARITY
+#define STOP_BITS_1  ONESTOPBIT
+#define STOP_BITS_15 ONE5STOPBITS
+#define STOP_BITS_2  TWOSTOPBITS
 
 
 uint8_t path_format(uint8_t * pathptr, uint8_t buff_size , LPCOMMCONFIG pcommconfig);
@@ -55,17 +58,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	COMMCONFIG commconfig; 
+	DCB dcb;
 
 
 	path_format(path, sizeof(path) , (LPCOMMCONFIG) &commconfig);
 
-
-	commconfig.dcb.BaudRate = BAUD_RATE   ; 
-	commconfig.dcb.ByteSize = BYTE_SIZE   ;
-	commconfig.dcb.Parity   = PARITY_NO   ;
-	commconfig.dcb.StopBits = STOP_BITS_1 ;
-
-	
 
 	vcom_handle = CreateFile(path, GENERIC_WRITE | GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL) ; 
 
@@ -80,10 +77,20 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 		}
 
-	// Handle Created - Now changing Config
+	// Handle Created 
+
+	//GetCommState now
+
+	GetCommState(vcom_handle, &dcb);
+
+	dcb.BaudRate = APP_BAUD_RATE ;
+	dcb.ByteSize = APP_BYTE_SIZE ;
+	dcb.StopBits = APP_STOP_BITS ;
+	dcb.Parity	 = APP_PARITY    ; 
+
+	SetCommState(vcom_handle, &dcb);
 
 
-	SetCommConfig(vcom_handle, &commconfig, sizeof(commconfig));
 
 	if (!WriteFile(vcom_handle, &uart_word, (DWORD)1, &num_written, NULL)){
 
@@ -108,13 +115,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 uint8_t path_format(uint8_t * pathptr, uint8_t buff_size, LPCOMMCONFIG pcommconfig){
 
-
-	DWORD i; 
 	DWORD size;
 
 	
 
-	for (i = 1; i <= COM_PORT_NUMBERS; i++){
+	for (DWORD i = 1; i <= COM_PORT_NUMBERS; i++){
 
 
 
