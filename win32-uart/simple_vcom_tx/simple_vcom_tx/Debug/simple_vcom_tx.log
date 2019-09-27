@@ -1,6 +1,8 @@
-﻿Build started 9/27/2019 1:11:11 PM.
+﻿Build started 9/27/2019 7:38:29 PM.
      1>Project "C:\Users\garmoosh\Desktop\eye-detection\win32-uart\simple_vcom_tx\simple_vcom_tx\simple_vcom_tx.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\simple_vcom_tx.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\simple_vcom_tx.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt simple_vcom_tx.c
          simple_vcom_tx.c
      1>c:\users\garmoosh\desktop\eye-detection\win32-uart\simple_vcom_tx\simple_vcom_tx\simple_vcom_tx.c(36): warning C4005: 'PARITY_ODD' : macro redefinition
@@ -11,14 +13,15 @@
                  c:\program files (x86)\windows kits\8.1\include\um\winbase.h(400) : see previous definition of 'PARITY_MARK'
      1>c:\users\garmoosh\desktop\eye-detection\win32-uart\simple_vcom_tx\simple_vcom_tx\simple_vcom_tx.c(39): warning C4005: 'PARITY_SPACE' : macro redefinition
                  c:\program files (x86)\windows kits\8.1\include\um\winbase.h(401) : see previous definition of 'PARITY_SPACE'
-     1>c:\users\garmoosh\desktop\eye-detection\win32-uart\simple_vcom_tx\simple_vcom_tx\simple_vcom_tx.c(72): warning C4047: '==' : 'HANDLE' differs in levels of indirection from 'long'
-     1>c:\users\garmoosh\desktop\eye-detection\win32-uart\simple_vcom_tx\simple_vcom_tx\simple_vcom_tx.c(154): warning C4715: 'path_format' : not all control paths return a value
+     1>c:\users\garmoosh\desktop\eye-detection\win32-uart\simple_vcom_tx\simple_vcom_tx\simple_vcom_tx.c(81): warning C4047: '==' : 'HANDLE' differs in levels of indirection from 'long'
+     1>c:\users\garmoosh\desktop\eye-detection\win32-uart\simple_vcom_tx\simple_vcom_tx\simple_vcom_tx.c(163): warning C4715: 'path_format' : not all control paths return a value
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\garmoosh\Desktop\eye-detection\win32-uart\simple_vcom_tx\Debug\simple_vcom_tx.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\garmoosh\Desktop\eye-detection\win32-uart\simple_vcom_tx\Debug\simple_vcom_tx.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\garmoosh\Desktop\eye-detection\win32-uart\simple_vcom_tx\Debug\simple_vcom_tx.lib" /MACHINE:X86 Debug\simple_vcom_tx.obj
          Debug\stdafx.obj
+         LINK : C:\Users\garmoosh\Desktop\eye-detection\win32-uart\simple_vcom_tx\Debug\simple_vcom_tx.exe not found or not built by the last incremental link; performing full link
          simple_vcom_tx.vcxproj -> C:\Users\garmoosh\Desktop\eye-detection\win32-uart\simple_vcom_tx\Debug\simple_vcom_tx.exe
      1>Done Building Project "C:\Users\garmoosh\Desktop\eye-detection\win32-uart\simple_vcom_tx\simple_vcom_tx\simple_vcom_tx.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.40
+Time Elapsed 00:00:03.59

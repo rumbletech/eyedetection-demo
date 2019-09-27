@@ -17,10 +17,10 @@
 // *****************************************************************************************************************************
 
 
-#define UART_WORD 0X55                   // Byte that will be sent to the microcontroller 
-#define DEBUG_MSG_LENGTH 255             // MAX LENGTH OF DEBUG MESSAGE ON SPRINTF
-#define COM_PORT_NUMBERS 256             // NUMBER OF ASSIGNED COM PORTS 
-#define COM_PORT_PATH_LENGTH 15          // Length of path in bytes 
+#define DEFAULT_UART_WORD      0X55            // Byte that will be sent to the microcontroller 
+#define DEBUG_MSG_LENGTH       255             // MAX LENGTH OF DEBUG MESSAGE ON SPRINTF
+#define COM_PORT_NUMBERS       256             // NUMBER OF ASSIGNED COM PORTS 
+#define COM_PORT_PATH_LENGTH   15              // Length of path in bytes 
 
 
 
@@ -53,12 +53,21 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	uint8_t path[COM_PORT_PATH_LENGTH];	     // HOLDS COM PORT NAME 
 
-	const uint8_t uart_word = UART_WORD;	 // Word to send 
+	uint8_t uart_word = DEFAULT_UART_WORD;			 // Word to send 
 	uint8_t sprintf_ptr[DEBUG_MSG_LENGTH];	 // Debug msg for sprintf 
 
 
-	COMMCONFIG commconfig; 
-	DCB dcb;
+	COMMCONFIG commconfig;					 
+
+	DCB dcb;  
+
+
+	// Get Word from command line arguments if possible 
+
+	if (argc == 2 ){
+
+		uart_word = **(argv + 1);
+	}
 
 
 	path_format(path, sizeof(path) , (LPCOMMCONFIG) &commconfig);
