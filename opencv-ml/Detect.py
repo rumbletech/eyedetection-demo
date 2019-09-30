@@ -1,4 +1,6 @@
 import cv2
+import os
+import time 
 
 
 haar_face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
@@ -17,8 +19,11 @@ while True:
         eyes = haar_eye_cascade.detectMultiScale(roi_gray)
         if(eyes == ()):
             print("Problem")
+            os.system("simple_vcom_tx.exe A")
+                        
         else:
             print("No problem")
+            os.system("simple_vcom_tx.exe B")
             for (ex, ey, ez, eh) in eyes:
                 cv2.rectangle(roi_color, (ex, ey), (ex + ez, ey + eh), (0, 255, 0), 2)
 

@@ -1,4 +1,4 @@
-﻿Build started 9/27/2019 7:38:29 PM.
+﻿Build started 9/30/2019 10:01:55 PM.
      1>Project "C:\Users\garmoosh\Desktop\eye-detection\win32-uart\simple_vcom_tx\simple_vcom_tx\simple_vcom_tx.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\simple_vcom_tx.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt stdafx.cpp
@@ -24,4 +24,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.59
+Time Elapsed 00:00:04.81
