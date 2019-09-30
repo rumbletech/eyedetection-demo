@@ -1,0 +1,277 @@
+
+GccApplication1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000122  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  00000122  000001b6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000001  00800062  00800062  000001b8  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000001b8  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001e8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000030  00000000  00000000  00000224  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000005af  00000000  00000000  00000254  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000050e  00000000  00000000  00000803  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000002b8  00000000  00000000  00000d11  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000060  00000000  00000000  00000fcc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000030b  00000000  00000000  0000102c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000000cf  00000000  00000000  00001337  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000020  00000000  00000000  00001406  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	26 c0       	rjmp	.+76     	; 0x5e <__vector_8>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	32 c0       	rjmp	.+100    	; 0x7c <__vector_11>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e2 e2       	ldi	r30, 0x22	; 34
+  3a:	f1 e0       	ldi	r31, 0x01	; 1
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a2 36       	cpi	r26, 0x62	; 98
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	20 e0       	ldi	r18, 0x00	; 0
+  4a:	a2 e6       	ldi	r26, 0x62	; 98
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a3 36       	cpi	r26, 0x63	; 99
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	20 d0       	rcall	.+64     	; 0x9a <main>
+  5a:	61 c0       	rjmp	.+194    	; 0x11e <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <__vector_8>:
+	} DRIVERSTATE ;
+	
+volatile DRIVERSTATE driverstate = NOPROBLEM ; 	
+volatile uint8_t x = 0 ; 
+	
+ISR ( TIMER1_OVF_vect ){
+  5e:	1f 92       	push	r1
+  60:	0f 92       	push	r0
+  62:	0f b6       	in	r0, 0x3f	; 63
+  64:	0f 92       	push	r0
+  66:	11 24       	eor	r1, r1
+	
+	driverstate = PROBLEM ; 
+  68:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+	TCNT1  = 0 ;
+  6c:	1d bc       	out	0x2d, r1	; 45
+  6e:	1c bc       	out	0x2c, r1	; 44
+	TCCR1B = 0 ;
+  70:	1e bc       	out	0x2e, r1	; 46
+	
+}
+  72:	0f 90       	pop	r0
+  74:	0f be       	out	0x3f, r0	; 63
+  76:	0f 90       	pop	r0
+  78:	1f 90       	pop	r1
+  7a:	18 95       	reti
+
+0000007c <__vector_11>:
+	
+	
+ISR( USART_RXC_vect ){
+  7c:	1f 92       	push	r1
+  7e:	0f 92       	push	r0
+  80:	0f b6       	in	r0, 0x3f	; 63
+  82:	0f 92       	push	r0
+  84:	11 24       	eor	r1, r1
+  86:	8f 93       	push	r24
+	
+	x= UDR ;
+  88:	8c b1       	in	r24, 0x0c	; 12
+  8a:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__data_end>
+}
+  8e:	8f 91       	pop	r24
+  90:	0f 90       	pop	r0
+  92:	0f be       	out	0x3f, r0	; 63
+  94:	0f 90       	pop	r0
+  96:	1f 90       	pop	r1
+  98:	18 95       	reti
+
+0000009a <main>:
+	
+int main(void)
+{
+	
+    DDRB |= ( 1 << PB1 ) ; 
+  9a:	b9 9a       	sbi	0x17, 1	; 23
+	UBRRL = 51;
+  9c:	83 e3       	ldi	r24, 0x33	; 51
+  9e:	89 b9       	out	0x09, r24	; 9
+	UCSRB =  ( 1<<RXEN )| ( 1 << RXCIE ) ;  
+  a0:	80 e9       	ldi	r24, 0x90	; 144
+  a2:	8a b9       	out	0x0a, r24	; 10
+	UCSRC =  (1 << UCSZ1) | (1 << UCSZ0)  | (1 << URSEL);
+  a4:	86 e8       	ldi	r24, 0x86	; 134
+  a6:	80 bd       	out	0x20, r24	; 32
+	TIMSK = ( 1 << TOIE1 );
+  a8:	84 e0       	ldi	r24, 0x04	; 4
+  aa:	89 bf       	out	0x39, r24	; 57
+	uint8_t flag = 0 ;
+	sei();
+  ac:	78 94       	sei
+    DDRB |= ( 1 << PB1 ) ; 
+	UBRRL = 51;
+	UCSRB =  ( 1<<RXEN )| ( 1 << RXCIE ) ;  
+	UCSRC =  (1 << UCSZ1) | (1 << UCSZ0)  | (1 << URSEL);
+	TIMSK = ( 1 << TOIE1 );
+	uint8_t flag = 0 ;
+  ae:	90 e0       	ldi	r25, 0x00	; 0
+					
+				}
+				
+				else if ( x == 'B' && driverstate == PROBLEM ){
+					
+					driverstate = NOPROBLEM ; 
+  b0:	31 e0       	ldi	r19, 0x01	; 1
+					PORTB &= ~ ( 1 << PB1 );     // TURN OFF MOTOR 
+					flag = 0 ;
+  b2:	20 e0       	ldi	r18, 0x00	; 0
+				if ( x == 'A' && driverstate == NOPROBLEM && !flag  ){
+					
+									// RUN THE TIMER 
+									TCCR1A = 0X00 ; 
+									TCNT1  = 0 ; 
+									TCCR1B = ( 0B101 << CS10 );
+  b4:	45 e0       	ldi	r20, 0x05	; 5
+	
+    while (1) 
+    {
+		
+
+				if ( x == 'A' && driverstate == NOPROBLEM && !flag  ){
+  b6:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
+  ba:	81 34       	cpi	r24, 0x41	; 65
+  bc:	61 f4       	brne	.+24     	; 0xd6 <main+0x3c>
+  be:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  c2:	81 30       	cpi	r24, 0x01	; 1
+  c4:	41 f4       	brne	.+16     	; 0xd6 <main+0x3c>
+  c6:	91 11       	cpse	r25, r1
+  c8:	06 c0       	rjmp	.+12     	; 0xd6 <main+0x3c>
+					
+									// RUN THE TIMER 
+									TCCR1A = 0X00 ; 
+  ca:	1f bc       	out	0x2f, r1	; 47
+									TCNT1  = 0 ; 
+  cc:	1d bc       	out	0x2d, r1	; 45
+  ce:	1c bc       	out	0x2c, r1	; 44
+									TCCR1B = ( 0B101 << CS10 );
+  d0:	4e bd       	out	0x2e, r20	; 46
+									flag = 1 ; 
+  d2:	93 2f       	mov	r25, r19
+  d4:	f0 cf       	rjmp	.-32     	; 0xb6 <main+0x1c>
+									
+									
+				}
+				
+				else if ( x == 'B' && driverstate == NOPROBLEM ){
+  d6:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
+  da:	82 34       	cpi	r24, 0x42	; 66
+  dc:	49 f4       	brne	.+18     	; 0xf0 <main+0x56>
+  de:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  e2:	81 30       	cpi	r24, 0x01	; 1
+  e4:	29 f4       	brne	.+10     	; 0xf0 <main+0x56>
+					
+					// TIMER OFF 
+					
+					TCNT1  = 0 ; 
+  e6:	1d bc       	out	0x2d, r1	; 45
+  e8:	1c bc       	out	0x2c, r1	; 44
+					TCCR1B = 0 ; 
+  ea:	1e bc       	out	0x2e, r1	; 46
+					flag = 0 ;
+  ec:	92 2f       	mov	r25, r18
+  ee:	e3 cf       	rjmp	.-58     	; 0xb6 <main+0x1c>
+					
+				}
+				
+				else if ( x == 'B' && driverstate == PROBLEM ){
+  f0:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
+  f4:	82 34       	cpi	r24, 0x42	; 66
+  f6:	49 f4       	brne	.+18     	; 0x10a <main+0x70>
+  f8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  fc:	81 11       	cpse	r24, r1
+  fe:	05 c0       	rjmp	.+10     	; 0x10a <main+0x70>
+					
+					driverstate = NOPROBLEM ; 
+ 100:	30 93 60 00 	sts	0x0060, r19	; 0x800060 <__DATA_REGION_ORIGIN__>
+					PORTB &= ~ ( 1 << PB1 );     // TURN OFF MOTOR 
+ 104:	c1 98       	cbi	0x18, 1	; 24
+					flag = 0 ;
+ 106:	92 2f       	mov	r25, r18
+ 108:	d6 cf       	rjmp	.-84     	; 0xb6 <main+0x1c>
+					
+				}
+				
+				else if ( x == 'A' && driverstate == PROBLEM ){
+ 10a:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <__data_end>
+ 10e:	81 34       	cpi	r24, 0x41	; 65
+ 110:	91 f6       	brne	.-92     	; 0xb6 <main+0x1c>
+ 112:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 116:	81 11       	cpse	r24, r1
+ 118:	ce cf       	rjmp	.-100    	; 0xb6 <main+0x1c>
+					
+					PORTB |= ( 1 << PB1 );  // TURN ON MOTOR 
+ 11a:	c1 9a       	sbi	0x18, 1	; 24
+ 11c:	cc cf       	rjmp	.-104    	; 0xb6 <main+0x1c>
+
+0000011e <_exit>:
+ 11e:	f8 94       	cli
+
+00000120 <__stop_program>:
+ 120:	ff cf       	rjmp	.-2      	; 0x120 <__stop_program>
